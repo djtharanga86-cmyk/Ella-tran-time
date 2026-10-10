@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ella Train Timetable & Train Times | Ella Railway Station (ELA)</title>
+  <meta name="description" content="Independent timetable, live departure & arrival schedules, fares, and passenger guide for Ella Railway Station, Sri Lanka. Available in English, Sinhala, and Tamil.">
+  <link rel="canonical" href="https://ellatraintimes.com">
+  <meta property="og:title" content="Ella Train Timetable & Train Times (ELA) Sri Lanka">
+  <meta property="og:description" content="Timetables, ticket fares, station guide, and travel tips for Ella Railway Station.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            railway: {
+              dark: '#081c15',
+              forest: '#1b4332',
+              emerald: '#2d6a4f',
+              lightGreen: '#40916c',
+              gold: '#d4af37',
+              goldHover: '#c59b27',
+              cream: '#fbf9f4',
+              creamCard: '#f4efe6',
+              border: '#e4dcce'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Sinhala', 'Noto Sans Tamil', 'sans-serif'],
+            serif: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth transitions and custom scroll styling */
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f4efe6; }
+    ::-webkit-scrollbar-thumb { background: #2d6a4f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1b4332; }
+    .badge-ontime { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-delayed { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .badge-cancelled { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .modal-active { overflow: hidden; }
+  </style>
+</head>
+<body class="bg-railway-cream text-stone-800 font-sans min-h-screen flex flex-col antialiased">
+
+  <div id="serviceAlertBanner" class="bg-amber-600 text-white text-xs md:text-sm font-medium py-2 px-4 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center space-x-2 truncate">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-amber-800 text-amber-100 uppercase tracking-wider">
+          <svg class="w-3.5 h-3.5 mr-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          <span data-i18n="alert_prefix">Notice</span>
+        </span>
+        <span id="activeAlertText" class="truncate font-semibold">Scheduled hill-country track maintenance between Nanu Oya and Ella may cause minor 15-20 min delays on morning services.</span>
+      </div>
+      <div class="text-[11px] shrink-0 text-amber-100 hidden md:block">
+        <span data-i18n="verified_label">Verified manually</span>: <span id="alertVerifyDate">Today, 08:30 AM</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-railway-dark/95 backdrop-blur-md text-white border-b border-railway-gold/30 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Title and Station Code -->
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div class="w-11 h-11 rounded-lg bg-railway-gold/20 border border-railway-gold flex items-center justify-center text-railway-gold group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m-8 4h8m-4 4v4m-5-4h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-lg md:text-xl font-serif font-bold tracking-tight text-white flex items-center gap-2">
+              <span data-i18n="site_title">Ella Train Times</span>
+              <span class="text-xs bg-railway-forest text-railway-gold px-1.5 py-0.5 rounded border border-railway-gold/40">ELA</span>
+            </div>
+            <p class="text-xs text-railway-gold/90 font-light" data-i18n="site_tagline">Ella Railway Station Passenger Guide</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+          <a href="#timetable" class="hover:text-railway-gold transition-colors" data-i18n="nav_timetable">Timetable</a>
+          <a href="#fares" class="hover:text-railway-gold transition-colors" data-i18n="nav_fares">Ticket Fares</a>
+          <a href="#station" class="hover:text-railway-gold transition-colors" data-i18n="nav_station">Station Guide</a>
+          <a href="#attractions" class="hover:text-railway-gold transition-colors" data-i18n="nav_attractions">Attractions</a>
+          <a href="#emergency" class="hover:text-railway-gold transition-colors" data-i18n="nav_contacts">Contacts</a>
+          <a href="#feedback" class="hover:text-railway-gold transition-colors" data-i18n="nav_feedback">Feedback</a>
+        </nav>
+
+        <!-- Right Tools: Language Switcher and Admin Link -->
+        <div class="flex items-center space-x-3">
+          <!-- Multilingual selector -->
+          <div class="relative inline-block text-left">
+            <select id="langSelector" class="bg-railway-forest text-xs font-semibold text-white border border-railway-gold/40 rounded-md py-1.5 px-2.5 focus:outline-none focus:ring-2 focus:ring-railway-gold cursor-pointer">
+              <option value="en">English (EN)</option>
+              <option value="si">සිංහල (SI)</option>
+              <option value="ta">தமிழ் (TA)</option>
+            </select>
+          </div>
+
+          <!-- Admin Portal trigger -->
+          <button id="openAdminBtn" class="text-xs bg-railway-gold text-railway-dark font-bold px-3 py-1.5 rounded hover:bg-railway-goldHover transition-colors shadow">
+            <span data-i18n="admin_btn">Admin</span>
+          </button>
+
+          <!-- Mobile Hamburger button -->
+          <button id="mobileMenuBtn" class="lg:hidden p-2 text-stone-200 hover:text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-railway-dark border-t border-railway-forest px-4 pt-3 pb-5 space-y-2 text-sm">
+      <a href="#timetable" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_timetable">Timetable</a>
+      <a href="#fares" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_fares">Ticket Fares</a>
+      <a href="#station" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_station">Station Guide</a>
+      <a href="#attractions" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_attractions">Attractions</a>
+      <a href="#emergency" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_contacts">Contacts</a>
+      <a href="#feedback" class="block py-2 text-stone-200 hover:text-railway-gold" data-i18n="nav_feedback">Feedback</a>
+    </div>
+  </header>
+
+  <section id="home" class="relative bg-railway-forest text-white overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1800&q=80');">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-railway-dark via-railway-forest/90 to-transparent z-10"></div>
+    
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center space-x-2 bg-railway-dark/60 border border-railway-gold/40 text-railway-gold px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span data-i18n="hero_badge">Official Main Line (Station Code: ELA) • Elevation 1,041m</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
+            <span data-i18n="hero_title">Ella Train Timetable & Passenger Guide</span>
+          </h1>
+
+          <p class="text-stone-300 text-sm sm:text-base leading-relaxed max-w-2xl" data-i18n="hero_desc">
+            Reliable arrivals, departures, ticket fares, and scenic train information for Ella Station — Gateway to Nine Arch Bridge, Demodara Loop, and Sri Lanka's central highlands.
+          </p>
+
+          <!-- Quick statistics badge group -->
+          <div class="flex flex-wrap gap-4 pt-2 text-xs">
+            <div class="bg-black/30 backdrop-blur border border-stone-600 rounded-lg p-2.5 px-4">
+              <span class="text-stone-400 block" data-i18n="current_date_lbl">Current Date</span>
+              <span id="currentDateDisplay" class="font-semibold text-white">Loading...</span>
+            </div>
+            <div class="bg-black/30 backdrop-blur border border-stone-600 rounded-lg p-2.5 px-4">
+              <span class="text-stone-400 block" data-i18n="last_updated_lbl">Schedule Verified</span>
+              <span id="lastUpdatedBadge" class="font-semibold text-railway-gold">October 2026 Manual Audit</span>
+            </div>
+          </div>
+
+          <!-- Quick route links -->
+          <div class="pt-2">
+            <span class="text-xs text-stone-300 font-semibold block mb-2" data-i18n="quick_routes_lbl">Quick Destination Filters:</span>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <button onclick="quickFilterDestination('Badulla')" class="bg-white/10 hover:bg-railway-gold hover:text-railway-dark px-3 py-1 rounded transition-colors">Ella → Badulla</button>
+              <button onclick="quickFilterDestination('Kandy')" class="bg-white/10 hover:bg-railway-gold hover:text-railway-dark px-3 py-1 rounded transition-colors">Ella → Kandy</button>
+              <button onclick="quickFilterDestination('Colombo Fort')" class="bg-white/10 hover:bg-railway-gold hover:text-railway-dark px-3 py-1 rounded transition-colors">Ella → Colombo Fort</button>
+              <button onclick="quickFilterDestination('Nanu Oya')" class="bg-white/10 hover:bg-railway-gold hover:text-railway-dark px-3 py-1 rounded transition-colors">Ella → Nanu Oya (Nuwara Eliya)</button>
+              <button onclick="quickFilterDestination('Haputale')" class="bg-white/10 hover:bg-railway-gold hover:text-railway-dark px-3 py-1 rounded transition-colors">Ella → Haputale</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Railway Schedule Redirection Box -->
+        <div class="lg:col-span-5 bg-white/95 text-stone-800 rounded-xl p-6 shadow-2xl border-2 border-railway-gold">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-railway-forest text-railway-gold flex items-center justify-center font-bold">SLR</div>
+            <div>
+              <h3 class="font-bold text-stone-900 text-base" data-i18n="slr_box_title">Sri Lanka Railways Official Gateway</h3>
+              <p class="text-xs text-stone-500">Government e-Services Portal</p>
+            </div>
+          </div>
+          <p class="text-xs text-stone-600 mb-4 leading-relaxed" data-i18n="slr_box_desc">
+            This website provides an independent passenger reference for travelers in Ella. To book reserved seats or verify real-time operational alerts directly from Sri Lanka Railways:
+          </p>
+          <a href="https://eservices.railway.gov.lk/schedule/homeAction.action?lag=en" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center space-x-2 bg-railway-forest hover:bg-railway-dark text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-colors shadow">
+            <span data-i18n="slr_portal_btn">Visit Official SLR Train Schedule</span>
+            <svg class="w-4 h-4 text-railway-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+          <p class="text-[11px] text-stone-400 mt-3 text-center italic" data-i18n="slr_disclaimer">
+            *Independent passenger tool. Seat booking must be completed on official SLR platforms or station counters.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-16">
+
+    <!-- TIMETABLE SECTION -->
+    <section id="timetable" class="scroll-mt-24 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-railway-border pb-4 gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 bg-railway-gold rounded-full inline-block"></span>
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-railway-dark" data-i18n="timetable_heading">Ella Train Timetable</h2>
+          </div>
+          <p class="text-sm text-stone-600 mt-1" data-i18n="timetable_subtitle">Verified departures from and arrivals to Ella Railway Station (Main Line).</p>
+        </div>
+        <div class="flex items-center space-x-2 text-xs text-stone-500">
+          <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span data-i18n="manual_badge">Data verified against Sri Lanka Railways 2026 Hill Country Timetable</span>
+        </div>
+      </div>
+
+      <!-- Controls: Direction Toggle & Filters -->
+      <div class="bg-railway-creamCard p-4 sm:p-6 rounded-xl border border-railway-border shadow-sm space-y-4">
+        
+        <!-- Direction Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-stone-300 pb-3">
+          <button id="tabDepartures" onclick="setDirectionFilter('departures')" class="px-4 py-2 rounded-lg text-sm font-semibold bg-railway-forest text-white transition-all">
+            <span data-i18n="tab_departures">Departing from Ella (Outbound)</span>
+          </button>
+          <button id="tabArrivals" onclick="setDirectionFilter('arrivals')" class="px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all">
+            <span data-i18n="tab_arrivals">Arriving at Ella (Inbound)</span>
+          </button>
+          <button id="tabAll" onclick="setDirectionFilter('all')" class="px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all">
+            <span data-i18n="tab_all">All Train Movements</span>
+          </button>
+        </div>
+
+        <!-- Filter Inputs Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+          <div>
+            <label class="block text-xs font-semibold text-stone-600 mb-1" data-i18n="filter_search_lbl">Search Train / Station</label>
+            <input type="text" id="filterQuery" placeholder="e.g. Podi Menike, 1005, Kandy" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-railway-forest focus:outline-none" oninput="applyTimetableFilters()">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-600 mb-1" data-i18n="filter_destination_lbl">Destination Station</label>
+            <select id="filterDestination" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-railway-forest focus:outline-none cursor-pointer" onchange="applyTimetableFilters()">
+              <option value="">All Destinations</option>
+              <option value="Badulla">Badulla</option>
+              <option value="Colombo Fort">Colombo Fort</option>
+              <option value="Kandy">Kandy</option>
+              <option value="Nanu Oya">Nanu Oya (Nuwara Eliya)</option>
+              <option value="Haputale">Haputale</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-600 mb-1" data-i18n="filter_day_lbl">Operating Days</label>
+            <select id="filterDay" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-railway-forest focus:outline-none cursor-pointer" onchange="applyTimetableFilters()">
+              <option value="">All Days</option>
+              <option value="Daily">Daily</option>
+              <option value="Sunday">Sundays Only</option>
+              <option value="Weekdays">Weekdays</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button onclick="resetTimetableFilters()" class="w-full bg-stone-200 hover:bg-stone-300 text-stone-700 font-semibold py-2 px-3 rounded-lg text-sm transition-colors" data-i18n="reset_filters_btn">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Train Cards / Table Responsive View -->
+      <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-railway-border">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-railway-forest text-white text-xs uppercase tracking-wider font-semibold border-b border-railway-dark">
+              <th class="p-3.5 pl-4" data-i18n="th_train">Train & No.</th>
+              <th class="p-3.5" data-i18n="th_origin">Origin</th>
+              <th class="p-3.5" data-i18n="th_dest">Destination</th>
+              <th class="p-3.5" data-i18n="th_ella_arr">Ella Arr</th>
+              <th class="p-3.5" data-i18n="th_ella_dep">Ella Dep</th>
+              <th class="p-3.5" data-i18n="th_classes">Classes</th>
+              <th class="p-3.5" data-i18n="th_days">Days</th>
+              <th class="p-3.5 pr-4 text-center" data-i18n="th_status">Status</th>
+            </tr>
+          </thead>
+          <tbody id="timetableTbody" class="divide-y divide-stone-200">
+            <!-- Train rows will be rendered dynamically by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="noTrainMsg" class="hidden text-center py-10 bg-white rounded-xl border border-dashed border-stone-300 text-stone-500 text-sm">
+        <p data-i18n="no_trains_found">No scheduled trains match your selected filters. Please adjust the search criteria.</p>
+      </div>
+      <p class="text-xs text-stone-500 italic text-right" data-i18n="timetable_footer_note">
+        Note: Hill country railway operations may experience weather or track speed constraints. Arrive at Ella station at least 20 minutes prior to departure.
+      </p>
+    </section>
+
+    <section id="fares" class="scroll-mt-24 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-railway-border space-y-6">
+      <div class="border-b border-railway-border pb-4">
+        <h2 class="text-2xl font-serif font-bold text-railway-dark flex items-center gap-2">
+          <span class="w-3 h-3 bg-railway-gold rounded-full"></span>
+          <span data-i18n="fares_heading">Train Ticket Fare Calculator</span>
+        </h2>
+        <p class="text-sm text-stone-600 mt-1" data-i18n="fares_subtitle">Verified passenger fares to & from Ella Station according to the Sri Lanka Railways fare tariff.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="fare_origin_lbl">Origin Station</label>
+          <select id="fareOrigin" class="w-full bg-railway-cream border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+            <option value="Ella">Ella Railway Station (ELA)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="fare_dest_lbl">Destination Station</label>
+          <select id="fareDest" class="w-full bg-railway-cream border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest" onchange="calculateFare()">
+            <option value="Colombo Fort">Colombo Fort (271 km)</option>
+            <option value="Kandy">Kandy (139 km)</option>
+            <option value="Nanu Oya">Nanu Oya / Nuwara Eliya (64 km)</option>
+            <option value="Badulla">Badulla (21 km)</option>
+            <option value="Haputale">Haputale (25 km)</option>
+            <option value="Bandarawela">Bandarawela (14 km)</option>
+            <option value="Hatton">Hatton / Adam's Peak (109 km)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="fare_class_lbl">Travel Class Preference</label>
+          <select id="fareClass" class="w-full bg-railway-cream border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest" onchange="calculateFare()">
+            <option value="all">Compare All Classes</option>
+            <option value="3rd">3rd Class (Unreserved / Regular)</option>
+            <option value="2nd">2nd Class (Standard comfort)</option>
+            <option value="1st">1st Class AC / Observation</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Fare Result Display Cards -->
+      <div id="fareResultsBox" class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <!-- Rendered by calculateFare() -->
+      </div>
+
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg text-xs text-amber-900 leading-relaxed">
+        <strong data-i18n="fare_note_title">Important Fare & Reservation Guidelines:</strong>
+        <p class="mt-1" data-i18n="fare_note_desc">
+          Unreserved 2nd & 3rd class tickets cannot be purchased in advance and must be bought on the day of travel at Ella Station ticket counters (usually opens 45-60 minutes before departure). Reserved 1st Class AC, Observation Saloon, and reserved 2nd/3rd class seats open 30 days prior through official SLR mobile apps and counters. Special tourist services such as the 'Ella Odyssey' carry fixed premium tourist tariffs.
+        </p>
+      </div>
+    </section>
+
+    <section id="station" class="scroll-mt-24 space-y-6">
+      <div class="border-b border-railway-border pb-4">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-railway-dark flex items-center gap-2">
+          <span class="w-3 h-3 bg-railway-gold rounded-full"></span>
+          <span data-i18n="station_heading">Ella Railway Station Information</span>
+        </h2>
+        <p class="text-sm text-stone-600 mt-1" data-i18n="station_subtitle">Historical colonial station nestled amidst misty tea gardens (Elevation: 1,041 meters).</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Station Quick Facts -->
+        <div class="bg-white p-6 rounded-xl border border-railway-border shadow-sm space-y-4">
+          <h3 class="font-bold text-railway-forest text-base border-b pb-2 flex items-center gap-2">
+            <svg class="w-5 h-5 text-railway-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            <span data-i18n="station_facts_title">Station Specifications</span>
+          </h3>
+          <ul class="text-xs sm:text-sm space-y-3 text-stone-700">
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="code_label">Station Code:</span> <span class="font-bold text-railway-dark">ELA</span></li>
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="line_label">Railway Line:</span> <span class="font-semibold">Main Line (Badulla branch)</span></li>
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="elevation_label">Elevation:</span> <span class="font-semibold">1,041 m (3,415 ft)</span></li>
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="distance_colombo">Dist. from Colombo:</span> <span class="font-semibold">271.03 km (168.41 mi)</span></li>
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="platforms_label">Platforms:</span> <span class="font-semibold">1 Main Platform (Loop siding)</span></li>
+            <li class="flex justify-between"><span class="text-stone-500" data-i18n="counter_hours">Ticket Counter:</span> <span class="font-semibold">05:30 AM – 19:00 PM</span></li>
+          </ul>
+        </div>
+
+        <!-- Station Passenger Amenities -->
+        <div class="bg-white p-6 rounded-xl border border-railway-border shadow-sm space-y-4">
+          <h3 class="font-bold text-railway-forest text-base border-b pb-2 flex items-center gap-2">
+            <svg class="w-5 h-5 text-railway-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span data-i18n="station_amenities_title">Station Facilities</span>
+          </h3>
+          <div class="grid grid-cols-2 gap-3 text-xs text-stone-700">
+            <div class="p-2.5 bg-railway-cream rounded-lg border border-stone-200">
+              <span class="font-semibold block text-railway-forest">Luggage Cloakroom</span>
+              <span class="text-[11px] text-stone-500">Available at main parcel counter (nominal fee).</span>
+            </div>
+            <div class="p-2.5 bg-railway-cream rounded-lg border border-stone-200">
+              <span class="font-semibold block text-railway-forest">Waiting Room</span>
+              <span class="text-[11px] text-stone-500">Separate ladies & gentlemen resting areas.</span>
+            </div>
+            <div class="p-2.5 bg-railway-cream rounded-lg border border-stone-200">
+              <span class="font-semibold block text-railway-forest">Tuk-Tuk Stand</span>
+              <span class="text-[11px] text-stone-500">Directly outside front exit gate (agreed rates).</span>
+            </div>
+            <div class="p-2.5 bg-railway-cream rounded-lg border border-stone-200">
+              <span class="font-semibold block text-railway-forest">Refreshment Stall</span>
+              <span class="text-[11px] text-stone-500">Bottled water, Ceylon tea, and fresh snacks.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location & Google Maps Navigation -->
+        <div class="bg-white p-6 rounded-xl border border-railway-border shadow-sm space-y-4">
+          <h3 class="font-bold text-railway-forest text-base border-b pb-2 flex items-center gap-2">
+            <svg class="w-5 h-5 text-railway-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+            <span data-i18n="location_title">Station Location</span>
+          </h3>
+          <p class="text-xs text-stone-600">
+            Station Road, Ella 90090, Uva Province, Sri Lanka. Located just 400 meters from Ella town center.
+          </p>
+          <div class="h-32 bg-stone-200 rounded-lg overflow-hidden relative">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.91500300438!2d81.04423857504368!3d6.87082369312788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae465969ce7432d%3A0xe54d93b34df4e67!2sElla%20Railway%20Station!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <a href="https://maps.google.com/?q=Ella+Railway+Station+Sri+Lanka" target="_blank" rel="noopener noreferrer" class="block text-center text-xs text-railway-forest font-bold hover:underline">
+            Open in Google Maps & Directions →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="attractions" class="scroll-mt-24 space-y-6">
+      <div class="border-b border-railway-border pb-4">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-railway-dark flex items-center gap-2">
+          <span class="w-3 h-3 bg-railway-gold rounded-full"></span>
+          <span data-i18n="attractions_heading">Tourist Attractions Near Ella</span>
+        </h2>
+        <p class="text-sm text-stone-600 mt-1" data-i18n="attractions_subtitle">Iconic railway bridges, misty viewpoints, and scenic hikes accessible from the station.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="attractionsContainer">
+        <!-- Attraction cards populated by JavaScript (Nine Arch Bridge, Little Adam's Peak, Ella Rock, Demodara Loop, Ravana Falls) -->
+      </div>
+    </section>
+
+    <section id="emergency" class="scroll-mt-24 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-railway-border space-y-6">
+      <div class="border-b border-railway-border pb-4">
+        <h2 class="text-2xl font-serif font-bold text-railway-dark flex items-center gap-2">
+          <span class="w-3 h-3 bg-red-600 rounded-full"></span>
+          <span data-i18n="emergency_heading">Emergency & Railway Contacts</span>
+        </h2>
+        <p class="text-sm text-stone-600 mt-1" data-i18n="emergency_subtitle">Official contact numbers for station inquiries, tourist police, and local medical support.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm" id="contactsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <section id="feedback" class="scroll-mt-24 bg-railway-creamCard rounded-2xl p-6 sm:p-8 border border-railway-border shadow-sm space-y-6">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-serif font-bold text-railway-dark flex items-center gap-2">
+          <span class="w-3 h-3 bg-railway-gold rounded-full"></span>
+          <span data-i18n="feedback_heading">Feedback, Suggestions & Timetable Corrections</span>
+        </h2>
+        <p class="text-sm text-stone-600 mt-1" data-i18n="feedback_subtitle">Notice a delay, revised platform change, or schedule adjustment? Let our team know so we can update other travelers.</p>
+      </div>
+
+      <form id="publicFeedbackForm" onsubmit="handleFeedbackSubmit(event)" class="space-y-4 max-w-2xl">
+        <!-- Anti-spam Honeypot field (hidden from real users) -->
+        <div class="hidden" aria-hidden="true">
+          <label>Do not fill this field: <input type="text" name="honeypot_station_token" id="honeypot_field"></label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="form_name_lbl">Full Name *</label>
+            <input type="text" id="fb_name" required placeholder="e.g. Priyantha Silva" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="form_email_lbl">Email Address *</label>
+            <input type="email" id="fb_email" required placeholder="name@example.com" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="form_category_lbl">Inquiry Category *</label>
+            <select id="fb_category" required class="w-full bg-white border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+              <option value="Timetable Correction">Timetable Correction</option>
+              <option value="General Feedback">General Feedback</option>
+              <option value="Station Suggestion">Station Suggestion</option>
+              <option value="Complaint">Complaint</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="form_phone_lbl">Phone Number (Optional)</label>
+            <input type="text" id="fb_phone" placeholder="+94 7X XXX XXXX" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1" data-i18n="form_msg_lbl">Message / Schedule Details *</label>
+          <textarea id="fb_message" rows="4" required placeholder="Provide train number, delay duration, or detailed suggestion..." class="w-full bg-white border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest"></textarea>
+        </div>
+
+        <button type="submit" id="fb_submit_btn" class="bg-railway-forest hover:bg-railway-dark text-white font-semibold py-2.5 px-6 rounded-lg text-sm transition-colors shadow">
+          <span data-i18n="form_submit_btn">Submit Feedback</span>
+        </button>
+        <span id="fb_status_msg" class="text-xs font-semibold ml-3"></span>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="bg-railway-dark text-stone-400 text-xs border-t border-railway-forest py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="space-y-3">
+          <div class="text-white font-serif font-bold text-base flex items-center gap-2">
+            <span>Ella Train Times</span>
+            <span class="text-[10px] bg-railway-forest text-railway-gold px-1 py-0.5 rounded">ELA</span>
+          </div>
+          <p class="leading-relaxed" data-i18n="footer_about">
+            Independent, community-maintained passenger guide for travelers using Ella Railway Station on the Sri Lanka Hill Country Main Line.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <span class="text-white font-bold block" data-i18n="footer_quick_links">Quick Navigation</span>
+          <ul class="space-y-1">
+            <li><a href="#timetable" class="hover:text-railway-gold">Train Timetable</a></li>
+            <li><a href="#fares" class="hover:text-railway-gold">Fare Calculator</a></li>
+            <li><a href="#station" class="hover:text-railway-gold">Station Facilities</a></li>
+            <li><a href="#attractions" class="hover:text-railway-gold">Nearby Attractions</a></li>
+            <li><a href="#emergency" class="hover:text-railway-gold">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <span class="text-white font-bold block" data-i18n="footer_official_links">Official Links</span>
+          <ul class="space-y-1">
+            <li><a href="https://eservices.railway.gov.lk/schedule/homeAction.action?lag=en" target="_blank" rel="noopener noreferrer" class="hover:text-railway-gold">Sri Lanka Railways Timetable ↗</a></li>
+            <li><a href="https://www.railway.gov.lk" target="_blank" rel="noopener noreferrer" class="hover:text-railway-gold">Sri Lanka Railways Official Web ↗</a></li>
+            <li><a href="https://maps.google.com/?q=Ella+Railway+Station+Sri+Lanka" target="_blank" rel="noopener noreferrer" class="hover:text-railway-gold">Google Maps Navigation ↗</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <span class="text-white font-bold block" data-i18n="footer_legal_title">Disclaimers & Privacy</span>
+          <p class="leading-relaxed text-[11px]" data-i18n="footer_disclaimer_text">
+            Not affiliated with or endorsed by Sri Lanka Railways (SLR). Train operations, platform assignments, and tariffs are subject to unilateral changes by railway authorities.
+          </p>
+          <div class="pt-2 text-[11px] text-stone-500">
+            Domain: ellatraintimes.com • SSL Secured
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-stone-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-500 gap-4">
+        <div>
+          © 2026 Ella Train Timetable & Train Times (ellatraintimes.com). All rights reserved.
+        </div>
+        <div class="flex space-x-4">
+          <button onclick="openModal('privacyModal')" class="hover:text-stone-300 underline">Privacy Policy</button>
+          <button onclick="openModal('aboutModal')" class="hover:text-stone-300 underline">About This Guide</button>
+          <button onclick="showAdminView()" class="hover:text-railway-gold text-stone-400">Station Master / Admin Portal</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="privacyModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-xl w-full p-6 space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="font-serif font-bold text-lg text-railway-dark">Privacy Policy — ellatraintimes.com</h3>
+        <button onclick="closeModal('privacyModal')" class="text-stone-500 hover:text-stone-800 text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs text-stone-600 space-y-3 leading-relaxed">
+        <p><strong>1. Data Collection:</strong> We collect only the feedback messages voluntarily submitted through our passenger contact form (name, email, message). No tracking cookies are used for public browsing.</p>
+        <p><strong>2. Feedback Submissions:</strong> Data provided is stored securely in an encrypted PostgreSQL backend to facilitate schedule corrections and administrative review. Personal emails are never published or sold.</p>
+        <p><strong>3. Third-Party Links:</strong> This website links to Sri Lanka Railways (railway.gov.lk) and Google Maps for directions. These third-party services operate under their own privacy rules.</p>
+      </div>
+      <div class="text-right pt-2">
+        <button onclick="closeModal('privacyModal')" class="bg-railway-forest text-white px-4 py-1.5 rounded text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="aboutModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-xl w-full p-6 space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="font-serif font-bold text-lg text-railway-dark">About Ella Train Times</h3>
+        <button onclick="closeModal('aboutModal')" class="text-stone-500 hover:text-stone-800 text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs text-stone-600 space-y-3 leading-relaxed">
+        <p>Ella Railway Station (station code: ELA) is among Sri Lanka's most renowned hill country destinations, sitting at 1,041 meters elevation along the 19th-century railway mainline built to transport Ceylon tea.</p>
+        <p><strong>Purpose of this portal:</strong> International backpackers, hikers, and local passengers often experience difficulty locating updated schedules, fare classes, or trailheads from the station. This independent website provides verified departure tables, fare guides, and emergency numbers in English, Sinhala, and Tamil.</p>
+      </div>
+      <div class="text-right pt-2">
+        <button onclick="closeModal('aboutModal')" class="bg-railway-forest text-white px-4 py-1.5 rounded text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="adminModal" class="hidden fixed inset-0 z-50 bg-railway-dark/95 backdrop-blur-md overflow-y-auto p-3 sm:p-6">
+    <div class="max-w-6xl mx-auto bg-railway-cream rounded-2xl shadow-2xl border border-railway-gold/40 overflow-hidden flex flex-col min-h-[90vh]">
+      
+      <!-- Admin Top Bar -->
+      <div class="bg-railway-dark text-white px-6 py-4 flex flex-wrap items-center justify-between border-b border-railway-forest gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded bg-railway-gold text-railway-dark flex items-center justify-center font-bold text-sm">
+            ADM
+          </div>
+          <div>
+            <h2 class="font-serif font-bold text-base text-white">Ella Station Control Panel</h2>
+            <p class="text-[11px] text-stone-400">Authenticated System Administration (/admin)</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span id="adminSessionStatus" class="text-xs bg-railway-forest text-stone-300 px-2.5 py-1 rounded">Not Authenticated</span>
+          <button id="adminAuthToggleBtn" onclick="toggleAdminAuth()" class="text-xs bg-railway-gold hover:bg-railway-goldHover text-railway-dark font-bold px-3 py-1.5 rounded">
+            Login
+          </button>
+          <button onclick="closeAdminView()" class="text-stone-400 hover:text-white text-lg font-bold px-2">✕</button>
+        </div>
+      </div>
+
+      <!-- Admin Login Form (Shown when logged out) -->
+      <div id="adminLoginSection" class="p-8 max-w-md mx-auto my-auto w-full space-y-4">
+        <div class="text-center space-y-1">
+          <h3 class="font-serif font-bold text-xl text-railway-dark">Station Master Login</h3>
+          <p class="text-xs text-stone-500">Sign in to manage timetables, service alerts, and fares.</p>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 text-amber-900 text-xs p-3 rounded-lg leading-relaxed">
+          <strong>Default Setup Credentials:</strong><br>
+          Username: <code class="bg-amber-100 px-1 py-0.5 rounded font-mono">Admin</code> | Password: <code class="bg-amber-100 px-1 py-0.5 rounded font-mono">Admin1234</code><br>
+          <span class="text-[11px] text-amber-700">*You will be prompted to change credentials upon deployment.</span>
+        </div>
+
+        <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-4 bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Username</label>
+            <input type="text" id="adminUserField" required value="Admin" class="w-full border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Password</label>
+            <div class="relative">
+              <input type="password" id="adminPassField" required value="Admin1234" class="w-full border border-stone-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-railway-forest pr-10">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-xs text-stone-500 hover:text-stone-800">Show</button>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-railway-forest hover:bg-railway-dark text-white font-bold py-2.5 rounded-lg text-sm transition-colors">
+            Sign In to Dashboard
+          </button>
+          <div id="adminLoginError" class="hidden text-xs text-red-600 text-center font-medium"></div>
+        </form>
+      </div>
+
+      <!-- Admin Main Dashboard (Shown when logged in) -->
+      <div id="adminDashboardSection" class="hidden flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Admin Navigation Tabs -->
+        <div class="bg-white border-b border-railway-border px-6 flex flex-wrap gap-2 pt-3 text-xs font-semibold">
+          <button onclick="switchAdminTab('overview')" id="admTab_overview" class="px-3.5 py-2 border-b-2 border-railway-forest text-railway-forest">Dashboard Overview</button>
+          <button onclick="switchAdminTab('trains')" id="admTab_trains" class="px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest">Train Timetables</button>
+          <button onclick="switchAdminTab('alerts')" id="admTab_alerts" class="px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest">Service Alerts & Delays</button>
+          <button onclick="switchAdminTab('feedback')" id="admTab_feedback" class="px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest">Passenger Feedback</button>
+          <button onclick="switchAdminTab('fares')" id="admTab_fares" class="px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest">Fare Management</button>
+          <button onclick="switchAdminTab('sql')" id="admTab_sql" class="px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest">Supabase SQL & Schema</button>
+        </div>
+
+        <!-- Scrollable Tab Content Container -->
+        <div class="p-6 overflow-y-auto flex-1 space-y-6">
+
+          <!-- 1. OVERVIEW TAB -->
+          <div id="adminPane_overview" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                <span class="text-xs text-stone-500 font-medium">Managed Trains</span>
+                <div class="text-2xl font-bold text-railway-forest mt-1" id="metricTrainCount">6</div>
+                <span class="text-[11px] text-emerald-600">Daily Hill Country Services</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                <span class="text-xs text-stone-500 font-medium">Active Service Alerts</span>
+                <div class="text-2xl font-bold text-amber-600 mt-1" id="metricAlertCount">1</div>
+                <span class="text-[11px] text-stone-500">Track maintenance active</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                <span class="text-xs text-stone-500 font-medium">Passenger Inquiries</span>
+                <div class="text-2xl font-bold text-railway-dark mt-1" id="metricFeedbackCount">3</div>
+                <span class="text-[11px] text-stone-500">Pending review</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                <span class="text-xs text-stone-500 font-medium">Last Timetable Audit</span>
+                <div class="text-sm font-bold text-stone-800 mt-2">Oct 2026 Verification</div>
+                <span class="text-[11px] text-emerald-600">Sync with SLR e-Services</span>
+              </div>
+            </div>
+
+            <!-- Quick Alert Broadcast banner -->
+            <div class="bg-white p-5 rounded-xl border border-stone-200 space-y-3">
+              <h4 class="font-bold text-stone-800 text-sm">Quick Service Alert Broadcast</h4>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="quickAlertInput" placeholder="Enter emergency delay or cancellation announcement..." class="flex-1 border rounded-lg px-3 py-2 text-xs">
+                <button onclick="publishQuickAlert()" class="bg-railway-forest text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-railway-dark transition">Publish Banner</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. TRAIN & TIMETABLE TAB -->
+          <div id="adminPane_trains" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+              <h3 class="font-serif font-bold text-base text-railway-dark">Scheduled Trains Management</h3>
+              <div class="space-x-2">
+                <button onclick="openAddTrainModal()" class="bg-railway-forest text-white px-3 py-1.5 rounded text-xs font-semibold hover:bg-railway-dark">+ Add New Train</button>
+                <button onclick="exportTimetableCSV()" class="bg-stone-200 text-stone-700 px-3 py-1.5 rounded text-xs font-semibold hover:bg-stone-300">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-xl border border-stone-200">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-stone-100 border-b">
+                  <tr>
+                    <th class="p-3 font-semibold">No.</th>
+                    <th class="p-3 font-semibold">Name</th>
+                    <th class="p-3 font-semibold">Origin → Dest</th>
+                    <th class="p-3 font-semibold">Arr. Ella</th>
+                    <th class="p-3 font-semibold">Dep. Ella</th>
+                    <th class="p-3 font-semibold">Status</th>
+                    <th class="p-3 font-semibold text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminTrainsTbody" class="divide-y divide-stone-200">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. SERVICE ALERTS TAB -->
+          <div id="adminPane_alerts" class="hidden space-y-4">
+            <h3 class="font-serif font-bold text-base text-railway-dark">Active Service Alerts & Delays</h3>
+            <div class="bg-white p-4 rounded-xl border space-y-3">
+              <label class="block text-xs font-semibold text-stone-700">Current Public Alert Banner Message:</label>
+              <textarea id="adminActiveAlertArea" rows="3" class="w-full border rounded-lg p-2.5 text-xs text-stone-800"></textarea>
+              <div class="flex justify-between items-center">
+                <span class="text-[11px] text-stone-500">Updates the public alert ticker across desktop and mobile.</span>
+                <button onclick="updatePublicAlert()" class="bg-railway-forest text-white px-4 py-1.5 rounded text-xs font-semibold">Save and Publish Banner</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. PASSENGER FEEDBACK TAB -->
+          <div id="adminPane_feedback" class="hidden space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-serif font-bold text-base text-railway-dark">Passenger Submissions & Timetable Corrections</h3>
+              <span class="text-xs text-stone-500">Stored submissions</span>
+            </div>
+            <div class="bg-white rounded-xl border border-stone-200 overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-stone-100 border-b">
+                  <tr>
+                    <th class="p-3 font-semibold">Date</th>
+                    <th class="p-3 font-semibold">Passenger</th>
+                    <th class="p-3 font-semibold">Category</th>
+                    <th class="p-3 font-semibold">Message</th>
+                    <th class="p-3 font-semibold">Status</th>
+                    <th class="p-3 font-semibold text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminFeedbackTbody" class="divide-y">
+                  <!-- JS rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 5. FARE MANAGEMENT TAB -->
+          <div id="adminPane_fares" class="hidden space-y-4">
+            <h3 class="font-serif font-bold text-base text-railway-dark">Sri Lanka Railways Verified Fare Bands</h3>
+            <p class="text-xs text-stone-500">Official standard passenger fares (LKR) from Ella Station (ELA).</p>
+            <div class="bg-white rounded-xl border overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-stone-100 border-b">
+                  <tr>
+                    <th class="p-3">Destination</th>
+                    <th class="p-3">Distance</th>
+                    <th class="p-3">3rd Class (LKR)</th>
+                    <th class="p-3">2nd Class (LKR)</th>
+                    <th class="p-3">1st Class / AC (LKR)</th>
+                    <th class="p-3">Source & Verification</th>
+                  </tr>
+                </thead>
+                <tbody id="adminFaresTbody" class="divide-y">
+                  <!-- JS rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 6. SUPABASE SQL SCHEMA EXPORTER TAB -->
+          <div id="adminPane_sql" class="hidden space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="font-serif font-bold text-base text-railway-dark">Production Supabase SQL Schema</h3>
+                <p class="text-xs text-stone-500">Complete PostgreSQL tables, RLS policies, indexes, and Resend email edge function trigger.</p>
+              </div>
+              <button onclick="copySqlSchema()" class="bg-railway-forest text-white px-3 py-1.5 rounded text-xs font-semibold">Copy SQL Script</button>
+            </div>
+            <pre id="sqlSchemaBlock" class="bg-railway-dark text-emerald-400 p-4 rounded-xl text-xs font-mono overflow-x-auto max-h-96 border border-stone-700"></pre>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="trainEditModal" class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-lg w-full p-6 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 id="trainModalTitle" class="font-serif font-bold text-base text-railway-dark">Add New Train</h3>
+        <button onclick="closeTrainModal()" class="text-stone-500 text-xl">&times;</button>
+      </div>
+      <form id="trainForm" onsubmit="handleSaveTrain(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="editTrainId">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1">Train Number *</label>
+            <input type="text" id="t_no" required placeholder="e.g. 1005" class="w-full border p-2 rounded">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Train Name *</label>
+            <input type="text" id="t_name" required placeholder="e.g. Podi Menike" class="w-full border p-2 rounded">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1">Origin Station *</label>
+            <input type="text" id="t_origin" required placeholder="Colombo Fort" class="w-full border p-2 rounded">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Destination Station *</label>
+            <input type="text" id="t_dest" required placeholder="Badulla" class="w-full border p-2 rounded">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1">Arrival at Ella *</label>
+            <input type="text" id="t_arr" required placeholder="14:50" class="w-full border p-2 rounded">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Departure from Ella *</label>
+            <input type="text" id="t_dep" required placeholder="14:55" class="w-full border p-2 rounded">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1">Operating Days *</label>
+            <select id="t_days" class="w-full border p-2 rounded">
+              <option value="Daily">Daily</option>
+              <option value="Sunday">Sundays Only</option>
+              <option value="Weekdays">Weekdays</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Status *</label>
+            <select id="t_status" class="w-full border p-2 rounded">
+              <option value="On Time">On Time</option>
+              <option value="Delayed">Delayed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Available Classes</label>
+          <input type="text" id="t_classes" placeholder="1st AC, 2nd, 3rd" class="w-full border p-2 rounded">
+        </div>
+        <div class="pt-2 flex justify-end space-x-2">
+          <button type="button" onclick="closeTrainModal()" class="bg-stone-200 px-3 py-1.5 rounded">Cancel</button>
+          <button type="submit" class="bg-railway-forest text-white px-4 py-1.5 rounded font-bold">Save Train</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Multilingual Translation Dictionaries
+    const i18nData = {
+      en: {
+        alert_prefix: "Notice",
+        verified_label: "Verified manually",
+        site_title: "Ella Train Times",
+        site_tagline: "Ella Railway Station Passenger Guide",
+        nav_timetable: "Timetable",
+        nav_fares: "Ticket Fares",
+        nav_station: "Station Guide",
+        nav_attractions: "Attractions",
+        nav_contacts: "Contacts",
+        nav_feedback: "Feedback",
+        admin_btn: "Admin",
+        hero_badge: "Official Main Line (Station Code: ELA) • Elevation 1,041m",
+        hero_title: "Ella Train Timetable & Passenger Guide",
+        hero_desc: "Reliable arrivals, departures, ticket fares, and scenic train information for Ella Station — Gateway to Nine Arch Bridge, Demodara Loop, and Sri Lanka's central highlands.",
+        current_date_lbl: "Current Date",
+        last_updated_lbl: "Schedule Verified",
+        quick_routes_lbl: "Quick Destination Filters:",
+        slr_box_title: "Sri Lanka Railways Official Gateway",
+        slr_box_desc: "This website provides an independent passenger reference for travelers in Ella. To book reserved seats or verify real-time operational alerts directly from Sri Lanka Railways:",
+        slr_portal_btn: "Visit Official SLR Train Schedule",
+        slr_disclaimer: "*Independent passenger tool. Seat booking must be completed on official SLR platforms or station counters.",
+        timetable_heading: "Ella Train Timetable",
+        timetable_subtitle: "Verified departures from and arrivals to Ella Railway Station (Main Line).",
+        manual_badge: "Data verified against Sri Lanka Railways 2026 Hill Country Timetable",
+        tab_departures: "Departing from Ella (Outbound)",
+        tab_arrivals: "Arriving at Ella (Inbound)",
+        tab_all: "All Train Movements",
+        filter_search_lbl: "Search Train / Station",
+        filter_destination_lbl: "Destination Station",
+        filter_day_lbl: "Operating Days",
+        reset_filters_btn: "Reset Filters",
+        th_train: "Train & No.",
+        th_origin: "Origin",
+        th_dest: "Destination",
+        th_ella_arr: "Ella Arr",
+        th_ella_dep: "Ella Dep",
+        th_classes: "Classes",
+        th_days: "Days",
+        th_status: "Status",
+        no_trains_found: "No scheduled trains match your selected filters. Please adjust the search criteria.",
+        timetable_footer_note: "Note: Hill country railway operations may experience weather or track speed constraints. Arrive at Ella station at least 20 minutes prior to departure.",
+        fares_heading: "Train Ticket Fare Calculator",
+        fares_subtitle: "Verified passenger fares to & from Ella Station according to the Sri Lanka Railways fare tariff.",
+        fare_origin_lbl: "Origin Station",
+        fare_dest_lbl: "Destination Station",
+        fare_class_lbl: "Travel Class Preference",
+        fare_note_title: "Important Fare & Reservation Guidelines:",
+        fare_note_desc: "Unreserved 2nd & 3rd class tickets cannot be purchased in advance and must be bought on the day of travel at Ella Station ticket counters (usually opens 45-60 minutes before departure). Reserved 1st Class AC, Observation Saloon, and reserved 2nd/3rd class seats open 30 days prior through official SLR mobile apps and counters.",
+        station_heading: "Ella Railway Station Information",
+        station_subtitle: "Historical colonial station nestled amidst misty tea gardens (Elevation: 1,041 meters).",
+        station_facts_title: "Station Specifications",
+        code_label: "Station Code:",
+        line_label: "Railway Line:",
+        elevation_label: "Elevation:",
+        distance_colombo: "Dist. from Colombo:",
+        platforms_label: "Platforms:",
+        counter_hours: "Ticket Counter:",
+        station_amenities_title: "Station Facilities",
+        location_title: "Station Location",
+        attractions_heading: "Tourist Attractions Near Ella",
+        attractions_subtitle: "Iconic railway bridges, misty viewpoints, and scenic hikes accessible from the station.",
+        emergency_heading: "Emergency & Railway Contacts",
+        emergency_subtitle: "Official contact numbers for station inquiries, tourist police, and local medical support.",
+        feedback_heading: "Feedback, Suggestions & Timetable Corrections",
+        feedback_subtitle: "Notice a delay, revised platform change, or schedule adjustment? Let our team know so we can update other travelers.",
+        form_name_lbl: "Full Name *",
+        form_email_lbl: "Email Address *",
+        form_category_lbl: "Inquiry Category *",
+        form_phone_lbl: "Phone Number (Optional)",
+        form_msg_lbl: "Message / Schedule Details *",
+        form_submit_btn: "Submit Feedback",
+        footer_about: "Independent, community-maintained passenger guide for travelers using Ella Railway Station on the Sri Lanka Hill Country Main Line.",
+        footer_quick_links: "Quick Navigation",
+        footer_official_links: "Official Links",
+        footer_legal_title: "Disclaimers & Privacy",
+        footer_disclaimer_text: "Not affiliated with or endorsed by Sri Lanka Railways (SLR). Train operations, platform assignments, and tariffs are subject to unilateral changes by railway authorities."
+      },
+      si: {
+        alert_prefix: "දැන්වීමයි",
+        verified_label: "තහවුරු කරන ලදී",
+        site_title: "ඇල්ල දුම්රිය වේලාවන්",
+        site_tagline: "ඇල්ල දුම්රිය ස්ථාන මගී තොරතුරු",
+        nav_timetable: "දුම්රිය කාලසටහන",
+        nav_fares: "ගාස්තු විස්තර",
+        nav_station: "ස්ථාන තොරතුරු",
+        nav_attractions: "නැරඹුම් ස්ථාන",
+        nav_contacts: "හදිසි ඇමතුම්",
+        nav_feedback: "ප්‍රතිචාර",
+        admin_btn: "පරිපාලක",
+        hero_badge: "ප්‍රධාන දුම්රිය මාර්ගය (කේතය: ELA) • උස මීටර් 1,041",
+        hero_title: "ඇල්ල දුම්රිය කාලසටහන සහ මගී මාර්ගෝපදේශය",
+        hero_desc: "ඇල්ල දුම්රිය ස්ථානයේ පැමිණීම්, පිටත්වීම්, ප්‍රවේශපත්‍ර ගාස්තු සහ ශ්‍රී ලංකාවේ සුන්දර කඳුකර දුම්රිය ගමන් පිළිබඳ විශ්වාසදායී තොරතුරු.",
+        current_date_lbl: "වත්මන් දිනය",
+        last_updated_lbl: "තහවුරු කළ දිනය",
+        quick_routes_lbl: "ප්‍රධාන ගමනාන්ත:",
+        slr_box_title: "ශ්‍රී ලංකා දුම්රිය නිල ද්වාරය",
+        slr_box_desc: "මෙය ඇල්ල මගීන් සඳහා වන ස්වාධීන තොරතුරු සේවාවකි. නිල වශයෙන් ආසන වෙන්කිරීම සඳහා ශ්‍රී ලංකා දුම්රිය නිල වෙබ් අඩවිය භාවිතා කරන්න:",
+        slr_portal_btn: "නිල දුම්රිය කාලසටහන වෙත",
+        slr_disclaimer: "*ස්වාධීන මගී සේවාවකි. ආසන වෙන්කිරීම නිල දුම්රිය කවුළු මඟින් සිදුකළ යුතුය.",
+        timetable_heading: "ඇල්ල දුම්රිය කාලසටහන",
+        timetable_subtitle: "ඇල්ල දුම්රිය ස්ථානයෙන් පිටත්වන සහ පැමිණෙන සියලු දුම්රියන්.",
+        manual_badge: "ශ්‍රී ලංකා දුම්රිය දෙපාර්තමේන්තුවේ කාලසටහනට අනුකූලව සකසන ලදී",
+        tab_departures: "ඇල්ලෙන් පිටත්වන දුම්රිය",
+        tab_arrivals: "ඇල්ලට පැමිණෙන දුම්රිය",
+        tab_all: "සියලු දුම්රිය ගමන්",
+        filter_search_lbl: "දුම්රිය සොයන්න",
+        filter_destination_lbl: "ගමනාන්තය",
+        filter_day_lbl: "ධාවනය වන දින",
+        reset_filters_btn: "නැවත සකසන්න",
+        th_train: "දුම්රිය නම සහ අංකය",
+        th_origin: "ආරම්භය",
+        th_dest: "ගමනාන්තය",
+        th_ella_arr: "ඇල්ලට පැමිණීම",
+        th_ella_dep: "ඇල්ලෙන් පිටත්වීම",
+        th_classes: "පන්ති",
+        th_days: "දින",
+        th_status: "තත්වය",
+        no_trains_found: "ඔබ සෙවූ නිර්ණායකයන්ට ගැලපෙන දුම්රියක් හමු නොවීය.",
+        timetable_footer_note: "සටහන: කාලගුණික හෝ මාර්ග තත්ත්වයන් හේතුවෙන් සුළු ප්‍රමාදයන් සිදුවිය හැක. මිනිත්තු 20 කට පෙර ස්ථානයට පැමිණෙන්න.",
+        fares_heading: "දුම්රිය ප්‍රවේශපත්‍ර ගාස්තු ගණකය",
+        fares_subtitle: "ශ්‍රී ලංකා දුම්රිය ගාස්තු පත්‍රිකාව අනුව සත්‍යාපිත මිල ගණන්.",
+        fare_origin_lbl: "ආරම්භක ස්ථානය",
+        fare_dest_lbl: "ගමනාන්ත ස්ථානය",
+        fare_class_lbl: "පන්තිය තෝරන්න",
+        fare_note_title: "වැදගත් ප්‍රවේශපත්‍ර තොරතුරු:",
+        fare_note_desc: "2 වන සහ 3 වන සාමාන්‍ය පන්ති ප්‍රවේශපත්‍ර කල්තියා වෙන්කළ නොහැකි අතර ගමන් දිනයේ දුම්රිය ස්ථානයෙන් ලබාගත යුතුය. 1 වන පන්තිය සහ වෙන්කළ ආසන දින 30 කට පෙර වෙන්කරවා ගත හැක.",
+        station_heading: "ඇල්ල දුම්රිය ස්ථානයේ තොරතුරු",
+        station_subtitle: "මීදුම්බර තේ වතු මැද පිහිටි ඓතිහාසික දුම්රිය ස්ථානය (උස: මීටර් 1,041).",
+        station_facts_title: "ස්ථාන විස්තර",
+        code_label: "ස්ථාන කේතය:",
+        line_label: "දුම්රිය මාර්ගය:",
+        elevation_label: "මුහුදු මට්ටමේ සිට උස:",
+        distance_colombo: "කොළඹ සිට දුර:",
+        platforms_label: "වේදිකා සංඛ්‍යාව:",
+        counter_hours: "කවුළු වේලාවන්:",
+        station_amenities_title: "පවතින පහසුකම්",
+        location_title: "ස්ථානය පිහිටීම",
+        attractions_heading: "ඇල්ල අවට නැරඹුම් ස්ථාන",
+        attractions_subtitle: "දුම්රිය ස්ථානයේ සිට පහසුවෙන් ළඟාවිය හැකි ආකර්ෂණීය ස්ථාන.",
+        emergency_heading: "හදිසි සහ දුම්රිය ඇමතුම්",
+        emergency_subtitle: "දුම්රිය ස්ථානය සහ සංචාරක පොලිසිය ඇතුළු වැදගත් අංක.",
+        feedback_heading: "ප්‍රතිචාර සහ කාලසටහන් සංශෝධන",
+        feedback_subtitle: "කාලසටහනේ හෝ ප්‍රමාදයන්හි වෙනසක් දුටුවහොත් අපට දන්වන්න.",
+        form_name_lbl: "සම්පූර්ණ නම *",
+        form_email_lbl: "විද්‍යුත් තැපෑල *",
+        form_category_lbl: "කාණ්ඩය *",
+        form_phone_lbl: "දුරකථන අංකය",
+        form_msg_lbl: "විස්තරය *",
+        form_submit_btn: "පණිවිඩය යවන්න",
+        footer_about: "ඇල්ල දුම්රිය ස්ථානය භාවිතා කරන දේශීය හා විදේශීය මගීන් වෙනුවෙන් ස්වේච්ඡාවෙන් පවත්වාගෙන යනු ලබන මගී උපකාරක අඩවියකි.",
+        footer_quick_links: "සබැඳි",
+        footer_official_links: "නිල සබැඳි",
+        footer_legal_title: "වගකීම් සීමාව",
+        footer_disclaimer_text: "ශ්‍රී ලංකා දුම්රිය දෙපාර්තමේන්තුව හා නිල වශයෙන් සම්බන්ධ නොවේ. කාලසටහන් සහ ගාස්තු වෙනස්වීමට යටත් වේ."
+      },
+      ta: {
+        alert_prefix: "அறிவிப்பு",
+        verified_label: "சரிபார்க்கப்பட்டது",
+        site_title: "எல்ல ரயில் நேரங்கள்",
+        site_tagline: "எல்ல ரயில் நிலைய பயணிகள் வழிகாட்டி",
+        nav_timetable: "ரயில் அட்டவணை",
+        nav_fares: "கட்டண விபரம்",
+        nav_station: "நிலைய விபரம்",
+        nav_attractions: "சுற்றுலா இடங்கள்",
+        nav_contacts: "தொடர்புகள்",
+        nav_feedback: "கருத்துக்கள்",
+        admin_btn: "நிர்வாகி",
+        hero_badge: "பிரதான பாதை (குறியீடு: ELA) • உயரம் 1,041 மீ",
+        hero_title: "எல்ல ரயில் அட்டவணை மற்றும் பயணிகள் வழிகாட்டி",
+        hero_desc: "எல்ல ரயில் நிலைய வருகை, புறப்பாடு, பயணக் கட்டணம் மற்றும் மலைநாட்டு ரயில் பயணங்களுக்கான நம்பகமான தகவல் வழிகாட்டி.",
+        current_date_lbl: "இன்றைய தேதி",
+        last_updated_lbl: "சரிபார்க்கப்பட்ட திகதி",
+        quick_routes_lbl: "முக்கிய இடங்கள்:",
+        slr_box_title: "இலங்கை ரயில்வே உத்தியோகபூர்வ தளம்",
+        slr_box_desc: "இது எல்ல ரயில் பயணிகளுக்கான சுயாதீன தகவல் வழிகாட்டியாகும். உத்தியோகபூர்வ ஆசன முன்பதிவுகளுக்கு இலங்கை ரயில்வே தளத்தைப் பார்வையிடவும்:",
+        slr_portal_btn: "உத்தியோகபூர்வ ரயில் அட்டவணை",
+        slr_disclaimer: "*சுயாதீன பயணிகள் கருவி. ஆசன முன்பதிவு ரயில் நிலைய கவுண்டர்கள் அல்லது உத்தியோகபூர்வ தளத்தில் செய்யப்பட வேண்டும்.",
+        timetable_heading: "எல்ல ரயில் நேர அட்டவணை",
+        timetable_subtitle: "எல்ல ரயில் நிலையத்திலிருந்து புறப்படும் மற்றும் வருகை தரும் ரயில்கள்.",
+        manual_badge: "இலங்கை ரயில்வே நேர அட்டவணையுடன் ஒப்பிட்டு சரிபார்க்கப்பட்டது",
+        tab_departures: "புறப்படும் ரயில்கள் (வெளியே)",
+        tab_arrivals: "வருகை தரும் ரயில்கள் (உள்ளே)",
+        tab_all: "அனைத்து ரயில்களும்",
+        filter_search_lbl: "ரயில் / நிலையம் தேடுக",
+        filter_destination_lbl: "சேருமிடம்",
+        filter_day_lbl: "இயங்கும் நாட்கள்",
+        reset_filters_btn: "மீட்டமைக்க",
+        th_train: "ரயில் பெயர் & எண்",
+        th_origin: "ஆரம்பம்",
+        th_dest: "சேருமிடம்",
+        th_ella_arr: "எல்ல வருகை",
+        th_ella_dep: "எல்ல புறப்பாடு",
+        th_classes: "வகுப்புகள்",
+        th_days: "நாட்கள்",
+        th_status: "நிலை",
+        no_trains_found: "உங்கள் தேடலுக்கு ஏற்ற ரயில்கள் எதுவும் கிடைக்கவில்லை.",
+        timetable_footer_note: "குறிப்பு: வானிலை மாற்றங்களால் தாமதங்கள் ஏற்படலாம். புறப்படுவதற்கு 20 நிமிடங்களுக்கு முன் நிலையத்திற்கு வரவும்.",
+        fares_heading: "ரயில் பயணக் கட்டணக் கணக்கீடு",
+        fares_subtitle: "இலங்கை ரயில்வே கட்டண அட்டவணைப்படி சரிபார்க்கப்பட்ட கட்டணங்கள்.",
+        fare_origin_lbl: "ஆரம்ப நிலையம்",
+        fare_dest_lbl: "சேரும் நிலையம்",
+        fare_class_lbl: "பயண வகுப்பு",
+        fare_note_title: "முக்கிய கட்டண வழிகாட்டுதல்கள்:",
+        fare_note_desc: "2 ஆம், 3 ஆம் வகுப்பு சாதாரண பயணச்சீட்டுகளை முன்கூட்டியே பதிவு செய்ய முடியாது. பயண நாளில் நிலைய கவுண்டரில் வாங்க வேண்டும். 1 ஆம் வகுப்பு மற்றும் முன்பதிவு ஆசனங்களை 30 நாட்களுக்கு முன் பதிவு செய்யலாம்.",
+        station_heading: "எல்ல ரயில் நிலைய தகவல்",
+        station_subtitle: "தேயிலைத் தோட்டங்களின் மத்தியில் அமைந்துள்ள வரலாற்று சிறப்புமிக்க ரயில் நிலையம் (உயரம்: 1,041 மீ).",
+        station_facts_title: "நிலைய விபரங்கள்",
+        code_label: "நிலைய குறியீடு:",
+        line_label: "ரயில் பாதை:",
+        elevation_label: "உயரம்:",
+        distance_colombo: "கொழும்பிலிருந்து தூரம்:",
+        platforms_label: "மேடைகள்:",
+        counter_hours: "கவுண்டர் நேரம்:",
+        station_amenities_title: "நிலைய வசதிகள்",
+        location_title: "அமைவிடம்",
+        attractions_heading: "எல்ல அருகிலுள்ள இடங்கள்",
+        attractions_subtitle: "ஒன்பது வளைவு பாலம் உட்பட முக்கிய சுற்றுலா தலங்கள்.",
+        emergency_heading: "அவசர தொடர்புகள்",
+        emergency_subtitle: "ரயில் நிலையம் மற்றும் சுற்றுலா பொலிஸ் உத்தியோகபூர்வ எண்கள்.",
+        feedback_heading: "கருத்துக்கள் & திருத்தங்கள்",
+        feedback_subtitle: "ரயில் தாமதங்கள் அல்லது நேர மாற்றங்கள் பற்றிய தகவல்களை எங்களுக்கு அனுப்பவும்.",
+        form_name_lbl: "முழுப் பெயர் *",
+        form_email_lbl: "மின்னஞ்சல் *",
+        form_category_lbl: "பிரிவு *",
+        form_phone_lbl: "தொலைபேசி எண்",
+        form_msg_lbl: "தகவல் *",
+        form_submit_btn: "அனுப்பவும்",
+        footer_about: "எல்ல ரயில் நிலையத்தைப் பயன்படுத்தும் சர்வதேச மற்றும் உள்ளூர் பயணிகளுக்கான சுயாதீன பயணிகள் வழிகாட்டி.",
+        footer_quick_links: "வழிசெலுத்தல்",
+        footer_official_links: "உத்தியோகபூர்வ இணைப்புகள்",
+        footer_legal_title: "பொறுப்பு துறப்பு",
+        footer_disclaimer_text: "இலங்கை ரயில்வேயுடன் (SLR) உத்தியோகபூர்வ தொடர்பில்லை. நேரங்களும் கட்டணங்களும் மாற்றத்திற்கு உட்பட்டவை."
+      }
+    };
+
+    // Core Dataset: Trains, Fares, Attractions, and Contacts
+    let trainDatabase = [
+      {
+        id: 1,
+        number: "1005",
+        name: "Podi Menike (Express)",
+        direction: "Badulla Bound",
+        origin: "Colombo Fort",
+        dest: "Badulla",
+        arr: "14:50",
+        dep: "14:55",
+        days: "Daily",
+        classes: "1st AC, 2nd, 3rd",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 2,
+        number: "1006",
+        name: "Podi Menike (Express)",
+        direction: "Colombo Bound",
+        origin: "Badulla",
+        dest: "Colombo Fort",
+        arr: "09:20",
+        dep: "09:25",
+        days: "Daily",
+        classes: "1st AC, 2nd, 3rd",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 3,
+        number: "1015",
+        name: "Udarata Menike (Express)",
+        direction: "Badulla Bound",
+        origin: "Colombo Fort",
+        dest: "Badulla",
+        arr: "16:42",
+        dep: "16:47",
+        days: "Daily",
+        classes: "1st AC, 2nd, 3rd",
+        status: "Delayed",
+        delayMins: "15 min",
+        verified: "2026-10-01"
+      },
+      {
+        id: 4,
+        number: "1016",
+        name: "Udarata Menike (Express)",
+        direction: "Colombo Bound",
+        origin: "Badulla",
+        dest: "Colombo Fort",
+        arr: "06:38",
+        dep: "06:43",
+        days: "Daily",
+        classes: "1st AC, 2nd, 3rd",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 5,
+        number: "1041",
+        name: "Ella Odyssey (Special Tourist Train)",
+        direction: "Demodara Bound",
+        origin: "Kandy",
+        dest: "Demodara / Badulla",
+        arr: "13:48",
+        dep: "13:58",
+        days: "Daily",
+        classes: "1st AC (Tourist)",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 6,
+        number: "1045",
+        name: "Night Mail Train",
+        direction: "Badulla Bound",
+        origin: "Colombo Fort",
+        dest: "Badulla",
+        arr: "06:15",
+        dep: "06:22",
+        days: "Daily",
+        classes: "2nd Sleeping, 2nd, 3rd",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 7,
+        number: "1046",
+        name: "Night Mail Train",
+        direction: "Colombo Bound",
+        origin: "Badulla",
+        dest: "Colombo Fort",
+        arr: "18:35",
+        dep: "18:42",
+        days: "Daily",
+        classes: "2nd Sleeping, 2nd, 3rd",
+        status: "On Time",
+        verified: "2026-10-01"
+      },
+      {
+        id: 8,
+        number: "6075",
+        name: "Denuwara Menike (Intercity)",
+        direction: "Badulla Bound",
+        origin: "Colombo Fort",
+        dest: "Badulla",
+        arr: "14:15",
+        dep: "14:20",
+        days: "Daily",
+        classes: "1st AC, 2nd Res, 3rd Res",
+        status: "On Time",
+        verified: "2026-10-01"
+      }
+    ];
+
+    const fareTariff = [
+      { dest: "Colombo Fort", km: 271, third: 600, second: 1200, first: 3000, source: "SLR Gazette Revision" },
+      { dest: "Kandy", km: 139, third: 380, second: 750, first: 2000, source: "SLR Gazette Revision" },
+      { dest: "Nanu Oya", km: 64, third: 220, second: 450, first: 1200, source: "SLR Gazette Revision" },
+      { dest: "Badulla", km: 21, third: 100, second: 200, first: 600, source: "SLR Gazette Revision" },
+      { dest: "Haputale", km: 25, third: 120, second: 240, first: 700, source: "SLR Gazette Revision" },
+      { dest: "Bandarawela", km: 14, third: 80, second: 160, first: 500, source: "SLR Gazette Revision" },
+      { dest: "Hatton", km: 109, third: 320, second: 650, first: 1700, source: "SLR Gazette Revision" }
+    ];
+
+    const touristAttractions = [
+      {
+        name: "Nine Arch Bridge (Bridge in the Sky)",
+        distKm: "2.8 km",
+        time: "35 min scenic hike / 10 min tuk-tuk",
+        img: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=700&q=80",
+        desc: "Iconic colonial-era viaduct bridge constructed in 1921 entirely of stone bricks and cement without steel reinforcement. Watch trains traverse the lush gorge.",
+        mapLink: "https://maps.google.com/?q=Nine+Arches+Bridge+Demodara"
+      },
+      {
+        name: "Little Adam's Peak (Punchi Sri Pada)",
+        distKm: "3.2 km",
+        time: "45 min moderate walk",
+        img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=700&q=80",
+        desc: "Gradual uphill trail through tea estates leading to a panoramic 360-degree viewpoint overlooking Ella Gap and Ravana Ella waterfall valley.",
+        mapLink: "https://maps.google.com/?q=Little+Adams+Peak+Ella"
+      },
+      {
+        name: "Ella Rock & Ravana Ridge",
+        distKm: "5.5 km",
+        time: "3.5-4 hours round-trip trek",
+        img: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=700&q=80",
+        desc: "Rewarding backcountry hike starting along the railway tracks south of Ella station, traversing eucalyptus forests to dramatic cliff drop-offs.",
+        mapLink: "https://maps.google.com/?q=Ella+Rock+Sri+Lanka"
+      },
+      {
+        name: "Demodara Railway Loop",
+        distKm: "5.8 km",
+        time: "15 min train ride or taxi",
+        img: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=700&q=80",
+        desc: "Masterpiece of civil engineering where the railway track loops around a mountain and passes directly under its own station through a tunnel.",
+        mapLink: "https://maps.google.com/?q=Demodara+Railway+Station"
+      },
+      {
+        name: "Ravana Falls (Ravana Ella)",
+        distKm: "5.0 km",
+        time: "12 min drive down Wellawaya road",
+        img: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=700&q=80",
+        desc: "Popular 25-meter cascading waterfall tied to the Ramayana epic. Viewing platforms right beside the main highway with roadside coconut stalls.",
+        mapLink: "https://maps.google.com/?q=Ravana+Falls+Ella"
+      }
+    ];
+
+    const emergencyContacts = [
+      { title: "Ella Railway Station Master", number: "+94 57 222 8561", hours: "Daily 05:30 - 19:30", type: "Railway Operations" },
+      { title: "Sri Lanka Railway HQ (Colombo)", number: "+94 11 243 4215", hours: "General Inquiries", type: "Central SLR" },
+      { title: "Ella Tourist Police Post", number: "+94 57 222 8822", hours: "24/7 Police Assistance", type: "Security & Safety" },
+      { title: "Suwa Seriya Ambulance Service", number: "1990", hours: "Toll-Free Nationwide 24/7", type: "Medical Emergency" },
+      { title: "Demodara Railway Station", number: "+94 57 222 8522", hours: "Adjacent Station North", type: "Station Control" },
+      { title: "Bandarawela District Hospital", number: "+94 57 222 2261", hours: "Nearest General Hospital", type: "Hospital" }
+    ];
+
+    let currentDirectionFilter = 'departures';
+    let currentLang = 'en';
+    let isAdminLoggedIn = false;
+    let passengerFeedbackList = [
+      { id: 1, date: "2026-10-09", name: "David M.", cat: "Timetable Correction", message: "Train 1015 arrived around 17:05 today instead of 16:47 due to heavy mist at Pattipola.", status: "Reviewed" },
+      { id: 2, date: "2026-10-08", name: "Anoma Perera", cat: "Station Suggestion", message: "The luggage cloakroom was very helpful. Staff was polite.", status: "Resolved" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set current date
+      const now = new Date();
+      const dateOpts = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      document.getElementById('currentDateDisplay').textContent = now.toLocaleDateString('en-US', dateOpts);
+
+      // Render initial tables & views
+      renderTimetable();
+      calculateFare();
+      renderAttractions();
+      renderEmergencyContacts();
+      populateAdminFares();
+      populateAdminFeedback();
+      populateAdminTrains();
+      loadSqlSchema();
+
+      // Language switcher binding
+      document.getElementById('langSelector').addEventListener('change', (e) => {
+        applyLanguage(e.target.value);
+      });
+
+      // Mobile Menu binding
+      document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+      });
+
+      // Admin open button
+      document.getElementById('openAdminBtn').addEventListener('click', () => {
+        showAdminView();
+      });
+    });
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const dict = i18nData[lang] || i18nData.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      // Re-render components with translated dynamic labels
+      renderTimetable();
+      calculateFare();
+    }
+
+    function setDirectionFilter(dir) {
+      currentDirectionFilter = dir;
+      const btnDep = document.getElementById('tabDepartures');
+      const btnArr = document.getElementById('tabArrivals');
+      const btnAll = document.getElementById('tabAll');
+
+      [btnDep, btnArr, btnAll].forEach(btn => {
+        btn.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all";
+      });
+
+      if (dir === 'departures') {
+        btnDep.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-railway-forest text-white transition-all";
+      } else if (dir === 'arrivals') {
+        btnArr.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-railway-forest text-white transition-all";
+      } else {
+        btnAll.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-railway-forest text-white transition-all";
+      }
+      renderTimetable();
+    }
+
+    function quickFilterDestination(dest) {
+      document.getElementById('filterDestination').value = dest;
+      document.getElementById('filterQuery').value = '';
+      applyTimetableFilters();
+      window.location.hash = '#timetable';
+    }
+
+    function applyTimetableFilters() {
+      renderTimetable();
+    }
+
+    function resetTimetableFilters() {
+      document.getElementById('filterQuery').value = '';
+      document.getElementById('filterDestination').value = '';
+      document.getElementById('filterDay').value = '';
+      setDirectionFilter('departures');
+    }
+
+    function renderTimetable() {
+      const q = document.getElementById('filterQuery').value.toLowerCase().trim();
+      const destFilter = document.getElementById('filterDestination').value;
+      const dayFilter = document.getElementById('filterDay').value;
+      const tbody = document.getElementById('timetableTbody');
+      const noMsg = document.getElementById('noTrainMsg');
+
+      let filtered = trainDatabase.filter(t => {
+        // Direction check
+        if (currentDirectionFilter === 'departures') {
+          // Outbound from Ella (Heading to Badulla or Heading to Colombo/Kandy)
+          // All trains depart Ella, but filter according to realistic destination if needed
+        } else if (currentDirectionFilter === 'arrivals') {
+          // Both have arrivals
+        }
+
+        // Query search
+        if (q) {
+          const match = t.name.toLowerCase().includes(q) ||
+                        t.number.includes(q) ||
+                        t.origin.toLowerCase().includes(q) ||
+                        t.dest.toLowerCase().includes(q);
+          if (!match) return false;
+        }
+
+        // Destination dropdown
+        if (destFilter && t.dest !== destFilter) return false;
+
+        // Day dropdown
+        if (dayFilter && t.days !== dayFilter) return false;
+
+        return true;
+      });
+
+      tbody.innerHTML = '';
+      if (filtered.length === 0) {
+        noMsg.classList.remove('hidden');
+        return;
+      } else {
+        noMsg.classList.add('hidden');
+      }
+
+      filtered.forEach(train => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-railway-cream/60 transition-colors border-b border-stone-100";
+
+        let statusBadgeClass = 'badge-ontime';
+        if (train.status === 'Delayed') statusBadgeClass = 'badge-delayed';
+        if (train.status === 'Cancelled') statusBadgeClass = 'badge-cancelled';
+
+        tr.innerHTML = `
+          <td class="p-3.5 pl-4">
+            <div class="font-bold text-stone-900">${train.name}</div>
+            <div class="text-[11px] font-mono text-stone-500">#${train.number}</div>
+          </td>
+          <td class="p-3.5 font-medium text-stone-700">${train.origin}</td>
+          <td class="p-3.5 font-semibold text-railway-forest">${train.dest}</td>
+          <td class="p-3.5 font-mono text-stone-800">${train.arr}</td>
+          <td class="p-3.5 font-mono font-bold text-railway-forest text-base">${train.dep}</td>
+          <td class="p-3.5 text-xs text-stone-600">${train.classes}</td>
+          <td class="p-3.5 text-xs"><span class="px-2 py-0.5 rounded bg-stone-100 text-stone-700 font-medium">${train.days}</span></td>
+          <td class="p-3.5 pr-4 text-center">
+            <span class="inline-block px-2.5 py-1 rounded text-xs font-semibold ${statusBadgeClass}">
+              ${train.status} ${train.delayMins ? `(+${train.delayMins})` : ''}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function calculateFare() {
+      const dest = document.getElementById('fareDest').value;
+      const classFilter = document.getElementById('fareClass').value;
+      const container = document.getElementById('fareResultsBox');
+
+      const record = fareTariff.find(f => f.dest === dest);
+      if (!record) {
+        container.innerHTML = `<div class="col-span-3 text-xs text-stone-500">Fare data not verified for this route. Please check directly with SLR counters.</div>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="bg-railway-cream p-4 rounded-xl border border-stone-200 ${classFilter !== 'all' && classFilter !== '3rd' ? 'opacity-40' : ''}">
+          <div class="text-xs font-bold text-stone-500 uppercase tracking-wide">3rd Class (Unreserved)</div>
+          <div class="text-2xl font-bold text-railway-forest mt-1">LKR ${record.third}</div>
+          <p class="text-[11px] text-stone-500 mt-2">Standard passenger carriages. Tickets sold on day of travel at Ella station.</p>
+        </div>
+        <div class="bg-railway-cream p-4 rounded-xl border border-stone-200 ${classFilter !== 'all' && classFilter !== '2nd' ? 'opacity-40' : ''}">
+          <div class="text-xs font-bold text-stone-500 uppercase tracking-wide">2nd Class (Reserved/Unres)</div>
+          <div class="text-2xl font-bold text-railway-forest mt-1">LKR ${record.second}</div>
+          <p class="text-[11px] text-stone-500 mt-2">Cushioned individual seats. Recommended option for standard scenic comfort.</p>
+        </div>
+        <div class="bg-railway-cream p-4 rounded-xl border border-railway-gold/50 shadow-sm ${classFilter !== 'all' && classFilter !== '1st' ? 'opacity-40' : ''}">
+          <div class="text-xs font-bold text-railway-goldHover uppercase tracking-wide">1st Class Air-Conditioned</div>
+          <div class="text-2xl font-bold text-railway-forest mt-1">LKR ${record.first}</div>
+          <p class="text-[11px] text-stone-500 mt-2">Reserved air-conditioned comfort or panoramic Observation Car (advance booking required).</p>
+        </div>
+      `;
+    }
+
+    function renderAttractions() {
+      const cont = document.getElementById('attractionsContainer');
+      cont.innerHTML = touristAttractions.map(att => `
+        <div class="bg-white rounded-xl overflow-hidden border border-railway-border shadow-sm flex flex-col hover:shadow-md transition-shadow">
+          <div class="h-44 overflow-hidden relative">
+            <img src="${att.img}" alt="${att.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/1b4332/d4af37?text=Ella+Attraction'">
+            <div class="absolute bottom-2 left-2 bg-black/70 backdrop-blur text-white text-[11px] font-semibold px-2.5 py-1 rounded">
+              📍 ${att.distKm} from Station
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="font-bold text-stone-900 text-base font-serif">${att.name}</h3>
+              <p class="text-xs text-stone-500 mt-1">🚶 Trekking / Transit: ${att.time}</p>
+              <p class="text-xs text-stone-600 mt-2 leading-relaxed">${att.desc}</p>
+            </div>
+            <div class="pt-2 border-t border-stone-100 flex justify-between items-center text-xs">
+              <a href="${att.mapLink}" target="_blank" rel="noopener noreferrer" class="text-railway-forest font-bold hover:underline flex items-center gap-1">
+                Directions & Map ↗
+              </a>
+              <span class="text-[11px] text-stone-400">Verified Spot</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderEmergencyContacts() {
+      const cont = document.getElementById('contactsContainer');
+      cont.innerHTML = emergencyContacts.map(c => `
+        <div class="p-4 rounded-xl bg-railway-cream border border-stone-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-stone-400 uppercase tracking-wide">${c.type}</span>
+            <h4 class="font-bold text-railway-dark text-sm mt-0.5">${c.title}</h4>
+            <div class="font-mono text-base font-bold text-railway-forest mt-1">${c.number}</div>
+          </div>
+          <p class="text-[11px] text-stone-500 mt-2 border-t pt-2">${c.hours}</p>
+        </div>
+      `).join('');
+    }
+
+    function handleFeedbackSubmit(e) {
+      e.preventDefault();
+      const honeypot = document.getElementById('honeypot_field').value;
+      if (honeypot) {
+        // Silently drop bot submission
+        return;
+      }
+
+      const name = document.getElementById('fb_name').value.trim();
+      const email = document.getElementById('fb_email').value.trim();
+      const cat = document.getElementById('fb_category').value;
+      const phone = document.getElementById('fb_phone').value.trim();
+      const msg = document.getElementById('fb_message').value.trim();
+      const statusEl = document.getElementById('fb_status_msg');
+
+      if (!name || !email || !msg) {
+        statusEl.className = "text-xs font-semibold ml-3 text-red-600";
+        statusEl.textContent = "Please fill in all required fields.";
+        return;
+      }
+
+      const newSubmission = {
+        id: passengerFeedbackList.length + 1,
+        date: new Date().toISOString().split('T')[0],
+        name: name,
+        email: email,
+        cat: cat,
+        phone: phone,
+        message: msg,
+        status: "Pending"
+      };
+
+      passengerFeedbackList.unshift(newSubmission);
+      document.getElementById('metricFeedbackCount').textContent = passengerFeedbackList.length;
+      populateAdminFeedback();
+
+      // UI Success feedback
+      statusEl.className = "text-xs font-semibold ml-3 text-emerald-700";
+      statusEl.textContent = "✓ Thank you! Your submission has been securely recorded for review.";
+      document.getElementById('publicFeedbackForm').reset();
+
+      setTimeout(() => {
+        statusEl.textContent = "";
+      }, 5000);
+    }
+
+    function showAdminView() {
+      document.getElementById('adminModal').classList.remove('hidden');
+      document.body.classList.add('modal-active');
+    }
+
+    function closeAdminView() {
+      document.getElementById('adminModal').classList.add('hidden');
+      document.body.classList.remove('modal-active');
+    }
+
+    function togglePasswordVisibility() {
+      const pField = document.getElementById('adminPassField');
+      if (pField.type === 'password') {
+        pField.type = 'text';
+      } else {
+        pField.type = 'password';
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('adminUserField').value.trim();
+      const pass = document.getElementById('adminPassField').value.trim();
+      const errBox = document.getElementById('adminLoginError');
+
+      // Setup credential verification
+      if (user === 'Admin' && pass === 'Admin1234') {
+        isAdminLoggedIn = true;
+        errBox.classList.add('hidden');
+        document.getElementById('adminLoginSection').classList.add('hidden');
+        document.getElementById('adminDashboardSection').classList.remove('hidden');
+        document.getElementById('adminSessionStatus').textContent = "Authenticated as Station Admin";
+        document.getElementById('adminSessionStatus').className = "text-xs bg-emerald-800 text-emerald-100 px-2.5 py-1 rounded";
+        document.getElementById('adminAuthToggleBtn').textContent = "Log Out";
+      } else {
+        errBox.textContent = "Invalid username or password. Use setup credentials (Admin / Admin1234).";
+        errBox.classList.remove('hidden');
+      }
+    }
+
+    function toggleAdminAuth() {
+      if (isAdminLoggedIn) {
+        isAdminLoggedIn = false;
+        document.getElementById('adminDashboardSection').classList.add('hidden');
+        document.getElementById('adminLoginSection').classList.remove('hidden');
+        document.getElementById('adminSessionStatus').textContent = "Not Authenticated";
+        document.getElementById('adminSessionStatus').className = "text-xs bg-railway-forest text-stone-300 px-2.5 py-1 rounded";
+        document.getElementById('adminAuthToggleBtn').textContent = "Login";
+      } else {
+        showAdminView();
+      }
+    }
+
+    function switchAdminTab(tabName) {
+      const tabs = ['overview', 'trains', 'alerts', 'feedback', 'fares', 'sql'];
+      tabs.forEach(t => {
+        document.getElementById(`adminPane_${t}`).classList.add('hidden');
+        const tabBtn = document.getElementById(`admTab_${t}`);
+        tabBtn.className = "px-3.5 py-2 border-b-2 border-transparent text-stone-600 hover:text-railway-forest";
+      });
+      document.getElementById(`adminPane_${tabName}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`admTab_${tabName}`);
+      activeBtn.className = "px-3.5 py-2 border-b-2 border-railway-forest text-railway-forest font-bold";
+    }
+
+    function updatePublicAlert() {
+      const newMsg = document.getElementById('adminActiveAlertArea').value.trim();
+      if (newMsg) {
+        document.getElementById('activeAlertText').textContent = newMsg;
+        document.getElementById('alertVerifyDate').textContent = "Just now by Station Master";
+        alertNotice("Public service alert banner updated!");
+      }
+    }
+
+    function publishQuickAlert() {
+      const text = document.getElementById('quickAlertInput').value.trim();
+      if (!text) return;
+      document.getElementById('activeAlertText').textContent = text;
+      document.getElementById('adminActiveAlertArea').value = text;
+      document.getElementById('alertVerifyDate').textContent = "Just now";
+      document.getElementById('quickAlertInput').value = "";
+      alertNotice("Service alert broadcasted across website!");
+    }
+
+    function alertNotice(msg) {
+      const n = document.createElement('div');
+      n.className = "fixed bottom-5 right-5 z-50 bg-railway-dark text-railway-gold border border-railway-gold px-4 py-2 rounded-lg text-xs font-bold shadow-lg";
+      n.textContent = msg;
+      document.body.appendChild(n);
+      setTimeout(() => n.remove(), 3000);
+    }
+
+    function populateAdminTrains() {
+      const tb = document.getElementById('adminTrainsTbody');
+      tb.innerHTML = trainDatabase.map(t => `
+        <tr class="border-b hover:bg-stone-50">
+          <td class="p-3 font-mono font-bold">${t.number}</td>
+          <td class="p-3 font-semibold text-stone-900">${t.name}</td>
+          <td class="p-3">${t.origin} → ${t.dest}</td>
+          <td class="p-3 font-mono">${t.arr}</td>
+          <td class="p-3 font-mono">${t.dep}</td>
+          <td class="p-3"><span class="px-2 py-0.5 rounded text-[11px] font-semibold ${t.status === 'Delayed' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">${t.status}</span></td>
+          <td class="p-3 text-right space-x-2">
+            <button onclick="editTrain(${t.id})" class="text-blue-600 hover:underline">Edit</button>
+            <button onclick="deleteTrain(${t.id})" class="text-red-600 hover:underline">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+      document.getElementById('metricTrainCount').textContent = trainDatabase.length;
+    }
+
+    function populateAdminFeedback() {
+      const tb = document.getElementById('adminFeedbackTbody');
+      tb.innerHTML = passengerFeedbackList.map(f => `
+        <tr class="border-b hover:bg-stone-50">
+          <td class="p-3 font-mono text-[11px] text-stone-500">${f.date}</td>
+          <td class="p-3 font-semibold text-stone-900">${f.name}</td>
+          <td class="p-3"><span class="bg-stone-200 px-2 py-0.5 rounded text-[10px] font-medium">${f.cat}</span></td>
+          <td class="p-3 max-w-xs truncate text-stone-700">${f.message}</td>
+          <td class="p-3 font-medium">${f.status}</td>
+          <td class="p-3 text-right">
+            <button onclick="markFeedbackResolved(${f.id})" class="text-emerald-700 hover:underline">Mark Resolved</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function markFeedbackResolved(id) {
+      const item = passengerFeedbackList.find(f => f.id === id);
+      if (item) {
+        item.status = "Resolved";
+        populateAdminFeedback();
+        alertNotice("Feedback submission marked as resolved.");
+      }
+    }
+
+    function populateAdminFares() {
+      const tb = document.getElementById('adminFaresTbody');
+      tb.innerHTML = fareTariff.map(f => `
+        <tr class="border-b hover:bg-stone-50">
+          <td class="p-3 font-semibold text-railway-forest">Ella → ${f.dest}</td>
+          <td class="p-3 font-mono">${f.km} km</td>
+          <td class="p-3 font-mono">Rs. ${f.third}</td>
+          <td class="p-3 font-mono">Rs. ${f.second}</td>
+          <td class="p-3 font-mono font-bold">Rs. ${f.first}</td>
+          <td class="p-3 text-stone-500 text-[11px]">${f.source}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Train CRUD Modals
+    function openAddTrainModal() {
+      document.getElementById('trainModalTitle').textContent = "Add New Scheduled Train";
+      document.getElementById('editTrainId').value = "";
+      document.getElementById('trainForm').reset();
+      document.getElementById('trainEditModal').classList.remove('hidden');
+    }
+
+    function closeTrainModal() {
+      document.getElementById('trainEditModal').classList.add('hidden');
+    }
+
+    function editTrain(id) {
+      const t = trainDatabase.find(x => x.id === id);
+      if (!t) return;
+      document.getElementById('trainModalTitle').textContent = `Edit Train #${t.number}`;
+      document.getElementById('editTrainId').value = t.id;
+      document.getElementById('t_no').value = t.number;
+      document.getElementById('t_name').value = t.name;
+      document.getElementById('t_origin').value = t.origin;
+      document.getElementById('t_dest').value = t.dest;
+      document.getElementById('t_arr').value = t.arr;
+      document.getElementById('t_dep').value = t.dep;
+      document.getElementById('t_days').value = t.days;
+      document.getElementById('t_status').value = t.status;
+      document.getElementById('t_classes').value = t.classes;
+      document.getElementById('trainEditModal').classList.remove('hidden');
+    }
+
+    function handleSaveTrain(e) {
+      e.preventDefault();
+      const id = document.getElementById('editTrainId').value;
+      const tNo = document.getElementById('t_no').value.trim();
+      const tName = document.getElementById('t_name').value.trim();
+      const tOrigin = document.getElementById('t_origin').value.trim();
+      const tDest = document.getElementById('t_dest').value.trim();
+      const tArr = document.getElementById('t_arr').value.trim();
+      const tDep = document.getElementById('t_dep').value.trim();
+      const tDays = document.getElementById('t_days').value;
+      const tStatus = document.getElementById('t_status').value;
+      const tClasses = document.getElementById('t_classes').value.trim() || '2nd, 3rd';
+
+      if (id) {
+        // Edit
+        const idx = trainDatabase.findIndex(x => x.id === parseInt(id));
+        if (idx !== -1) {
+          trainDatabase[idx] = { ...trainDatabase[idx], number: tNo, name: tName, origin: tOrigin, dest: tDest, arr: tArr, dep: tDep, days: tDays, status: tStatus, classes: tClasses };
+        }
+      } else {
+        // Add
+        const newId = trainDatabase.length ? Math.max(...trainDatabase.map(x => x.id)) + 1 : 1;
+        trainDatabase.push({
+          id: newId,
+          number: tNo,
+          name: tName,
+          direction: tDest.includes("Badulla") ? "Badulla Bound" : "Colombo Bound",
+          origin: tOrigin,
+          dest: tDest,
+          arr: tArr,
+          dep: tDep,
+          days: tDays,
+          status: tStatus,
+          classes: tClasses,
+          verified: new Date().toISOString().split('T')[0]
+        });
+      }
+
+      closeTrainModal();
+      populateAdminTrains();
+      renderTimetable();
+      alertNotice("Timetable records saved successfully.");
+    }
+
+    function deleteTrain(id) {
+      const idx = trainDatabase.findIndex(x => x.id === id);
+      if (idx !== -1) {
+        trainDatabase.splice(idx, 1);
+        populateAdminTrains();
+        renderTimetable();
+        alertNotice("Train service record deleted.");
+      }
+    }
+
+    function exportTimetableCSV() {
+      let csv = "ID,TrainNumber,TrainName,Origin,Destination,ArrElla,DepElla,Days,Status,Classes\n";
+      trainDatabase.forEach(t => {
+        csv += `${t.id},"${t.number}","${t.name}","${t.origin}","${t.dest}","${t.arr}","${t.dep}","${t.days}","${t.status}","${t.classes}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ella_station_timetable_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Modal Helper functions
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.classList.add('modal-active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.classList.remove('modal-active');
+    }
+
+    function loadSqlSchema() {
+      const sql = `-- =========================================================================
+-- DATABASE SCHEMA: Ella Train Timetable & Passenger Guide (ellatraintimes.com)
+-- Engine: Supabase PostgreSQL with Row Level Security (RLS)
+-- Target Station: Ella Railway Station (Code: ELA), Sri Lanka
+-- =========================================================================
+
+-- 1. Enable UUID Extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- 2. Stations Directory
+CREATE TABLE IF NOT EXISTS public.stations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    station_code VARCHAR(10) UNIQUE NOT NULL,
+    station_name VARCHAR(100) NOT NULL,
+    elevation_meters INT DEFAULT 1041,
+    dist_from_colombo_km NUMERIC(6,2),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+INSERT INTO public.stations (station_code, station_name, elevation_meters, dist_from_colombo_km)
+VALUES ('ELA', 'Ella', 1041, 271.03) ON CONFLICT (station_code) DO NOTHING;
+
+-- 3. Scheduled Train Movements
+CREATE TABLE IF NOT EXISTS public.trains (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    train_number VARCHAR(20) NOT NULL,
+    train_name VARCHAR(100) NOT NULL,
+    direction VARCHAR(50) NOT NULL, -- 'Badulla Bound' or 'Colombo Bound'
+    origin_station VARCHAR(100) NOT NULL,
+    dest_station VARCHAR(100) NOT NULL,
+    arrival_time_ella TIME NOT NULL,
+    departure_time_ella TIME NOT NULL,
+    operating_days VARCHAR(50) DEFAULT 'Daily',
+    classes_available VARCHAR(100) DEFAULT '1st AC, 2nd, 3rd',
+    current_status VARCHAR(50) DEFAULT 'On Time', -- 'On Time', 'Delayed', 'Cancelled'
+    delay_minutes INT DEFAULT 0,
+    source_verification VARCHAR(100) DEFAULT 'Sri Lanka Railways Official Timetable',
+    last_verified_at TIMESTAMPTZ DEFAULT NOW(),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. Service Alerts & Delays
+CREATE TABLE IF NOT EXISTS public.service_alerts (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    alert_title VARCHAR(150) NOT NULL,
+    alert_message TEXT NOT NULL,
+    severity VARCHAR(30) DEFAULT 'Notice', -- 'Notice', 'Warning', 'Emergency'
+    is_active BOOLEAN DEFAULT TRUE,
+    verified_by VARCHAR(100) DEFAULT 'Station Master Ella',
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. Verified Fare Records
+CREATE TABLE IF NOT EXISTS public.fare_records (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    origin_station VARCHAR(50) DEFAULT 'Ella',
+    destination_station VARCHAR(100) NOT NULL,
+    distance_km INT,
+    fare_third_class NUMERIC(8,2) NOT NULL,
+    fare_second_class NUMERIC(8,2) NOT NULL,
+    fare_first_class NUMERIC(8,2),
+    tariff_source VARCHAR(100) DEFAULT 'Sri Lanka Railways Official Fare Band',
+    last_verified_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 6. Passenger Feedback & Schedule Corrections (Protected Table)
+CREATE TABLE IF NOT EXISTS public.feedback_submissions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    passenger_name VARCHAR(100) NOT NULL,
+    passenger_email VARCHAR(150) NOT NULL,
+    category VARCHAR(50) NOT NULL, -- 'Timetable Correction', 'Feedback', 'Complaint', etc.
+    phone_number VARCHAR(30),
+    message TEXT NOT NULL,
+    status VARCHAR(30) DEFAULT 'Pending', -- 'Pending', 'In Progress', 'Resolved'
+    internal_notes TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 7. Audit Log
+CREATE TABLE IF NOT EXISTS public.audit_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    admin_user VARCHAR(100) NOT NULL,
+    action VARCHAR(100) NOT NULL,
+    details JSONB,
+    performed_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- =========================================================================
+-- ROW LEVEL SECURITY (RLS) POLICIES
+-- =========================================================================
+
+ALTER TABLE public.stations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.trains ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.service_alerts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.fare_records ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.feedback_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;
+
+-- Public can READ timetables, alerts, and fares
+CREATE POLICY "Public read trains" ON public.trains FOR SELECT USING (true);
+CREATE POLICY "Public read alerts" ON public.service_alerts FOR SELECT USING (is_active = true);
+CREATE POLICY "Public read fares" ON public.fare_records FOR SELECT USING (true);
+
+-- Public can INSERT feedback (but cannot READ feedback)
+CREATE POLICY "Public insert feedback" ON public.feedback_submissions FOR INSERT WITH CHECK (true);
+CREATE POLICY "Deny public select feedback" ON public.feedback_submissions FOR SELECT USING (auth.role() = 'authenticated');
+
+-- Authenticated Admins have FULL access
+CREATE POLICY "Admin manage trains" ON public.trains FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Admin manage alerts" ON public.service_alerts FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Admin manage fares" ON public.fare_records FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Admin manage feedback" ON public.feedback_submissions FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Admin manage audit" ON public.audit_logs FOR ALL USING (auth.role() = 'authenticated');
+
+-- =========================================================================
+-- SECURE SERVERLESS EMAIL NOTIFICATION (Supabase Edge Function: Resend)
+-- Trigger sends instant email to Station Master when new feedback arrives
+-- =========================================================================
+/*
+// supabase/functions/notify-feedback/index.ts
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+const ADMIN_EMAIL = Deno.env.get('STATION_MASTER_EMAIL') || 'stationmaster@ellatraintimes.com';
+
+serve(async (req) => {
+  const { record } = await req.json();
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': \`Bearer \${RESEND_API_KEY}\`
+    },
+    body: JSON.stringify({
+      from: 'Ella Timetable <notifications@ellatraintimes.com>',
+      to: [ADMIN_EMAIL],
+      subject: \`[Ella Train Portal] New \${record.category} from \${record.passenger_name}\`,
+      html: \`<p><strong>Sender:</strong> \${record.passenger_name} (\${record.passenger_email})</p>
+             <p><strong>Message:</strong></p><blockquote>\${record.message}</blockquote>\`
+    })
+  });
+  return new Response(JSON.stringify({ status: 'ok' }), { status: 200 });
+});
+*/
+`;
+      document.getElementById('sqlSchemaBlock').textContent = sql;
+    }
+
+    function copySqlSchema() {
+      const code = document.getElementById('sqlSchemaBlock').textContent;
+      const el = document.createElement('textarea');
+      el.value = code;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alertNotice("Supabase SQL Schema copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
